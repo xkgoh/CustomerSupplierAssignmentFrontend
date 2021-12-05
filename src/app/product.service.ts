@@ -5,64 +5,43 @@ import { Product } from './model/product';
 import { Supplier } from './model/supplier';
 import { Observable } from 'rxjs';
 
+import { environment } from '../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-  private productUrl = 'http://localhost:8080/products';
-  private supplierUrl = 'http://localhost:8080/suppliers'
+  private productUrl = `${environment.apiEndPoint}/products`;
+  private supplierUrl = `${environment.apiEndPoint}/suppliers`;
 
   constructor(private http: HttpClient, private credentialsService: CredentialsService) { }
 
   getSuppliers(): Observable<Supplier[]> {
-    var httpOptions = {
-      headers: new HttpHeaders(
-        {
-          'Content-Type': 'application/json' ,
-          'Authorization': 'Basic ' + btoa(`${this.credentialsService.getUsername()}:${this.credentialsService.getPassword()}`)
-        }
-      )
-    };
-    return this.http.get<Supplier[]>(this.supplierUrl,httpOptions)
+    return this.http.get<Supplier[]>(this.supplierUrl, this.getHttpOptions());
   }
 
   createProduct(product: Product): Observable<Product> {
-    var httpOptions = {
-      headers: new HttpHeaders(
-        {
-          'Content-Type': 'application/json' ,
-          'Authorization': 'Basic ' + btoa(`${this.credentialsService.getUsername()}:${this.credentialsService.getPassword()}`)
-        }
-      )
-    };
-    return this.http.post<Product>(this.productUrl, httpOptions)  
+    return this.http.post<Product>(this.productUrl, product,  this.getHttpOptions()); 
   }
 
   getProduct(id : number): Observable<Product> {
-    var url = this.productUrl + "/" + id;
-    var httpOptions = {
-      headers: new HttpHeaders(
-        {
-          'Content-Type': 'application/json' ,
-          'Authorization': 'Basic ' + btoa(`${this.credentialsService.getUsername()}:${this.credentialsService.getPassword()}`)
-        }
-      )
-    };
-    return this.http.get<Product>(url, httpOptions)
+    const url = this.productUrl + "/" + id;
+    return this.http.get<Product>(url, this.getHttpOptions());
   }
 
   updateProduct(product: Product): Observable<Product> {
-    var url = this.productUrl + "/" + product.id;
-    var httpOptions = {
-      headers: new HttpHeaders(
-        {
-          'Content-Type': 'application/json' ,
-          'Authorization': 'Basic ' + btoa(`${this.credentialsService.getUsername()}:${this.credentialsService.getPassword()}`)
-        }
-      )
-    };
-    return this.http.put<Product>(url, product, httpOptions)
+    const url = this.productUrl + "/" + product.id;
+    return this.http.put<Product>(url, product, this.getHttpOptions());
+  }
+
+  private getHttpOptions(): object {
+    return {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json' ,
+        'Authorization': 'Basic ' + this.credentialsService.getToken()
+      })
+    }
   }
 
 }

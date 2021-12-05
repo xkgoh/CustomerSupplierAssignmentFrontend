@@ -19,7 +19,7 @@ export class ProductComponent implements OnInit {
     supplierId: 0
   }
 
-  suppliers: Supplier[] = []
+  suppliers: Supplier[] = [];
 
   constructor(private productService: ProductService) { }
 
@@ -35,16 +35,16 @@ export class ProductComponent implements OnInit {
 
   onCreateProduct(): void {
     this.productService.createProduct(this.product)
-    .subscribe(product => this.product = product)
+    .subscribe(product => this.product = product);
   }
 
   onGetProduct(): void {
     this.productService.getProduct(this.product.id)
-    .subscribe(product => this.product = product)
+    .subscribe(product => this.product = product);
   }
 
   onUpdateProduct(): void {
     this.productService.updateProduct(this.product)
-    .subscribe(product => this.product = product)
+    .subscribe(product => this.product = product);
   }
 }

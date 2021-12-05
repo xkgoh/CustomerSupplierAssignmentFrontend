@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class CredentialsService {
 
-  username: string =""
-  password: string = ""
+  username: string ="";
+  password: string = "";
 
   constructor() { }
 
@@ -16,5 +16,9 @@ export class CredentialsService {
 
   getPassword(): string {
     return this.password;
+  }
+
+  getToken(): string {
+    return btoa(`${this.getUsername()}:${this.getPassword()}`);
   }
 }

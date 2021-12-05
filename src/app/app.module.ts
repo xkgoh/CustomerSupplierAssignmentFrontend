@@ -15,8 +15,8 @@ import { ProductSalesComponent } from './product-sales/product-sales.component';
 import { MonthlySalesComponent } from './monthly-sales/monthly-sales.component';
 
 import { AgGridModule } from 'ag-grid-angular';
-// import { ChartModule } from 'angular-highcharts';
-import { HighchartsChartComponent } from 'highcharts-angular';
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { HighchartsChartComponent } from 'highcharts-angular';
     CredentialsComponent,
     ProductComponent,
     ProductSalesComponent,
-    MonthlySalesComponent
+    MonthlySalesComponent    
   ],
   imports: [
     BrowserModule,
@@ -34,6 +34,7 @@ import { HighchartsChartComponent } from 'highcharts-angular';
     FormsModule,
     HttpClientModule,
     AgGridModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

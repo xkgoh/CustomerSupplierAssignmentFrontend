@@ -19,7 +19,7 @@ export class ProductSalesComponent implements OnInit {
 
   getProductSalesReport(): void {
     this.productSalesService.getSalesReport(this.filterCountry)
-    .subscribe(salesTable => this.salesTable = salesTable)
+    .subscribe(salesTable => this.salesTable = salesTable);
   }
 
 }
