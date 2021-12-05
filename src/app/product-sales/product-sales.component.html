@@ -1,0 +1,20 @@
+<h2>Product Sales Report:</h2>
+
+<b>Country Filter: </b>
+<input id="countryFilter" type="text" [(ngModel)]="filterCountry">
+<br><br>
+<button (click)="getProductSalesReport()">GET REPORT</button>
+<br>
+
+<table>
+    <tr>
+      <th>Product Name</th>
+      <th>Quantity</th>
+      <th>Sales Amount</th>
+    </tr>
+    <tr *ngFor="let sales of salesTable">
+      <td>{{ sales.productName }}</td>
+      <td>{{ sales.quantity }}</td>
+      <td>{{ sales.salesAmount }}</td>
+    </tr>
+  </table>

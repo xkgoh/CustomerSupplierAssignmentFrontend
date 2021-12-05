@@ -1,0 +1,37 @@
+<h2>Product Details:</h2>
+<div>
+    <label for="productId">Product Id: </label>
+    <input id="productId" type="number" [(ngModel)]="product.id">
+</div>
+<div>
+    <label for="productName">Product Name: </label>
+    <input id="productName" type="text" [(ngModel)]="product.productName">
+</div>
+<div>
+    <label for="productUnitPrice">Last Name: </label>
+    <input id="productUnitPrice" type="number" [(ngModel)]="product.unitPrice">
+</div>
+<div>
+    <label for="productPackageName">City: </label>
+    <input id="productPackageName" type="text" [(ngModel)]="product.packageName">
+</div>
+<div>
+    <label for="discontinuedTrue"> Is Discontinued: </label>
+    <input id="discontinuedTrue" type="checkbox" name="productDiscontinued"  [(ngModel)]="product.discontinued" ng-checked="product.discontinued"> TRUE
+</div>
+<div>
+    <label for="productSupplierId">Phone: </label>
+    <input id="productSupplierId" type="number" [(ngModel)]="product.supplierId">
+</div>
+<div>
+    Suppliers: 
+    <select id="suppliersSelecter" [(ngModel)]="product.supplierId">
+      <option  *ngFor="let supplier of suppliers" value="{{supplier.id}}">{{supplier.id}} {{supplier.companyName}}</option>
+    </select>
+    <button (click)="getSuppliers()">GET SUPPLIERS</button>
+  </div>
+
+
+<button (click)="onCreateProduct()">Create</button>
+<button (click)="onGetProduct()">Retrieve</button>
+<button (click)="onUpdateProduct()">Update</button>

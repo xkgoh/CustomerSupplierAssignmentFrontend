@@ -1,16 +1,39 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CustomerComponent } from './customer/customer.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { CredentialsComponent } from './credentials/credentials.component';
+import { ProductComponent } from './product/product.component';
+import { ProductSalesComponent } from './product-sales/product-sales.component';
+
+import { MonthlySalesComponent } from './monthly-sales/monthly-sales.component';
+
+import { AgGridModule } from 'ag-grid-angular';
+// import { ChartModule } from 'angular-highcharts';
+import { HighchartsChartComponent } from 'highcharts-angular';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CustomerComponent,
+    DashboardComponent,
+    CredentialsComponent,
+    ProductComponent,
+    ProductSalesComponent,
+    MonthlySalesComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    AgGridModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
